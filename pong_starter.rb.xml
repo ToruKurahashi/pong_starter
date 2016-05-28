@@ -1,0 +1,106 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <character x="0" y="0" name="tunnel1" costumes="costume1:tunnel.png" angle="0"></character>
+  <character x="296" y="42" name="balla1" costumes="costume1:ball-a2.png" angle="45"></character>
+  <character x="282" y="444" name="paddle1" costumes="costume1:paddle.png" angle="0"></character>
+  <block type="character_new" id="3" x="15" y="-490">
+    <field name="NAME">tunnel1</field>
+  </block>
+  <block type="character_new" id="112" x="154" y="-492">
+    <field name="NAME">balla1</field>
+    <statement name="DO">
+      <block type="events_on_start" id="113">
+        <statement name="DO">
+          <block type="control_loop" id="131">
+            <statement name="DO">
+              <block type="motion_turn_if_reach_wall" id="162">
+                <next>
+                  <block type="motion_move" id="193" inline="true">
+                    <value name="STEP">
+                      <block type="math_number" id="194">
+                        <field name="NUM">15</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="character_new" id="197" x="452" y="-492">
+    <field name="NAME">balla1</field>
+    <statement name="DO">
+      <block type="events_on_start" id="198">
+        <statement name="DO">
+          <block type="control_loop" id="216">
+            <statement name="DO">
+              <block type="control_if" id="230" inline="true">
+                <value name="COND">
+                  <block type="sensing_hit" id="240">
+                    <field name="CHAR">paddle1</field>
+                  </block>
+                </value>
+                <statement name="THEN">
+                  <block type="sound_play" id="246" inline="true">
+                    <value name="NAME">
+                      <block type="sound_preset_sounds" id="247">
+                        <field name="NAME">piano_do.wav</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="motion_rotate_right" id="288" inline="true">
+                        <value name="ANGLE">
+                          <block type="operators_rand" id="343" inline="true">
+                            <value name="A">
+                              <block type="math_number" id="344">
+                                <field name="NUM">160</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="345">
+                                <field name="NUM">200</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="motion_move" id="378" inline="true">
+                            <value name="STEP">
+                              <block type="math_number" id="379">
+                                <field name="NUM">15</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="character_new" id="195" x="17" y="-255">
+    <field name="NAME">paddle1</field>
+    <statement name="DO">
+      <block type="events_on_start" id="4">
+        <statement name="DO">
+          <block type="control_loop" id="111">
+            <statement name="DO">
+              <block type="motion_set_x" id="52" inline="true">
+                <value name="X">
+                  <block type="sensing_input_mouse_pos_x" id="93"></block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
